@@ -152,8 +152,41 @@
         console.log(cars);
         
         console.log('------------- .splice() [3] ------------');
-        cars.splice(1, 0, firstEntry, lastEntry, removed, replaced);
+        cars.splice(1, 0, firstEntry, lastEntry, removed[0], removed[1], removed[2], replaced[0]);
         console.log(cars);
+
+        /* faîte moi une copie du tableau cars dans une nouvelle constante nommée carsClone */
+        const carsClone = cars.slice();
+        /*
+        const carsClone = cars;
+        */
+        carsClone.pop();
+        console.log(cars);
+        console.log(carsClone);
+
+        console.log(cars.slice(2, 4));
+
+        console.table(cars);
+        
+        /* et les tableaux à 2 dimension */
+        const carsTest = [
+            ['Fiat', 1996],
+            ['Kya', 1995],
+            ['Kya', 1990],
+            ['Ford', 1950],
+            ['12', '62']
+        ];
+
+        console.log(carsTest);
+        console.table(carsTest);
+
+        cars.sort();
+        console.table(cars);
+        
+        carsTest.sort();
+        console.table(carsTest);
+        
+        
 
         </script>
 </head>
