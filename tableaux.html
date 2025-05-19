@@ -186,6 +186,34 @@
         carsTest.sort();
         console.table(carsTest);
         
+        /* parcourir un tableau 2d */
+        console.log('-------------- parcourir avec for et un cpt ----------');
+        for(let i = 0; i < carsTest.length; i++){
+            for(let j = 0; j < carsTest[i].length; j++){
+                console.log(carsTest[i][j]);
+            }
+        }
+        
+        /* trouver la première occurence cherchée dans un tableau */
+        console.log('---------- .find() -----------');
+        const arrayNum = [5, 8, 12, 130, 44];
+        const found = arrayNum.find(function(element){
+            return element > 20;
+        });
+        
+        console.log(found);
+        
+        /* trouver toutes les occurences d'un tableau */
+        console.log('---------- .filter() -----------');
+        const filtered = arrayNum.filter(function(element){
+            return element > 20;
+        });
+        console.log(filtered);
+
+        console.log(arrayNum.indexOf(12));
+        
+        console.log('Le rapide renard saute par dessus le chien feignant'.indexOf('ien'));
+        console.log('Le rapide renard saute par dessus le chien feignant'.indexOf('IEn'));
         
 
         </script>
