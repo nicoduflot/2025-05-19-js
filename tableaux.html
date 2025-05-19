@@ -120,9 +120,41 @@
         console.log('------------ .map() uniquement pour les tableau, adapté niveau puissance ---------------');
         cars.map(function(car, index, tab){
             console.log(car, index, tab);
-            
         });
         
+        /* il existe beaucoup d'autre méthode d'itération, mais c'est surtout ce qu'elles renvoie dans la fonction de rappel qui diffère */
+        console.log('------------ .entries() renvoie dans la fonction de rappel chaque élément du tableau sous forme d\'un tableau ---------------');
+        for(let entry of cars.entries()){
+            console.log(entry);            
+        }
+
+        /* extraire des valeurs d'un tableau */
+        /* .pop() extrait la dernière valeur d'un tableau */
+        /* .shift() extrait la première valeur d'un tableau */
+        /* .splice() extrait X valeurs d'un tableau depuis un index donné et peut optionnellement ajouter des valeurs depuis cet index */
+
+        console.log('------------- .pop() ------------');
+        const lastEntry = cars.pop();
+        console.log(lastEntry, cars);
+        
+        console.log('------------- .shift() ------------');
+        const firstEntry = cars.shift();
+        console.log(firstEntry, cars);
+        
+        console.log('------------- .splice() [1] ------------');
+        const removed = cars.splice(1, 3);
+        console.log(removed);
+        console.log(cars);
+        
+        console.log('------------- .splice() [2] ------------');
+        const replaced = cars.splice(0, 1, 'Alpine', 'Mazda')
+        console.log(replaced);
+        console.log(cars);
+        
+        console.log('------------- .splice() [3] ------------');
+        cars.splice(1, 0, firstEntry, lastEntry, removed, replaced);
+        console.log(cars);
+
         </script>
 </head>
 
