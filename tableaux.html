@@ -43,6 +43,36 @@
 
         console.log(cars);
 
+        /* Les tableaux sont des objets Itérables, pour cela on utilise des boucles et des méthodes d'itération */
+        console.log('----------------- boucles ------------------');
+        console.log('----------------- boucles for ------------------');
+        
+        for(let i = 0; i < cars.length; i = i + 1){
+            console.log(cars[i]);
+        }
+        
+        console.log('----------------- boucles for in ------------------');
+        for(let index in cars){
+            console.log(cars[index]);
+        }
+
+        /* le for in peut parcourir des objets */
+
+        /* créeons un objet litéral */
+        let obj = {
+            nom: 'Duflot',
+            prenom: 'Nicolas',
+            presentation: function(){
+                return `bonjour, je m'appelle ${this.prenom} ${this.nom}`;
+            }
+        };
+
+        console.log(obj);
+        console.log(obj.nom);
+        console.log(obj.prenom);
+        console.log(obj.presentation());
+        
+        
 
 
     </script>
