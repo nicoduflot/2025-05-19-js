@@ -45,19 +45,19 @@
 
         /* Les tableaux sont des objets Itérables, pour cela on utilise des boucles et des méthodes d'itération */
         console.log('----------------- boucles ------------------');
-        console.log('----------------- boucles for ------------------');
+        console.log('----------------- boucle for ------------------');
         
         for(let i = 0; i < cars.length; i = i + 1){
             console.log(cars[i]);
         }
         
-        console.log('----------------- boucles for in ------------------');
+        console.log('----------------- boucle for in ------------------');
         for(let index in cars){
             console.log(cars[index]);
         }
-
+        
         /* le for in peut parcourir des objets */
-
+        
         /* créeons un objet litéral */
         let obj = {
             nom: 'Duflot',
@@ -66,16 +66,64 @@
                 return `bonjour, je m'appelle ${this.prenom} ${this.nom}`;
             }
         };
-
+        
         console.log(obj);
         console.log(obj.nom);
         console.log(obj.prenom);
         console.log(obj.presentation());
         
+        for(let key in obj){
+            console.log(`la clef est ${key}, elle contient ${obj[key]}`);
+        }
         
+        /* depuis es6, il existe la fonction for of */
+        console.log('----------------- boucle for of ------------------');
+        for(let car of cars){
+            console.log(`la valeur actuellement parcourue dans cars est ${car}`);
+        }
+        
+        console.log('----------------- boucles tant que et faire tant que ------------------');
+        console.log('----------------- boucle tant que ------------------');
+        let cpt = 0;
+        while(cpt < cars.length){
+            console.log(`Voiture ${cars[cpt]}`);
+            
+            cpt = cpt + 1;
+        }
+        
+        console.log('----------------- boucle faire tant que ------------------');
+        cpt = 7;
+        do{
+            console.log(`Voiture ${cars[cpt]}`);
+            cpt = cpt + 1;
+        }while(cpt < cars.length);
 
-
-    </script>
+        console.log('------------ les méthodes de parcour des tableaux ---------------');
+        console.log('------------ .forEach() (plutôt conseillé pour tous les objets itérables mais pas les tableaux) ---------------');
+        cars.forEach(function(valeur, index, tab){
+            console.log(valeur, index, tab);
+        });
+        
+        const prix = [23, 255.5, 45, 22];
+        
+        function TTC(listePrix, taux){
+            listePrix.forEach(function(prixUnique, index, tab){
+                tab[index] = prixUnique*taux;
+            });
+        }
+        
+        console.log(prix);
+        TTC(prix, 1.055);
+        console.log(prix);
+        
+        /* le foreach n'est pas adapté aux tableau car trop puissant */
+        console.log('------------ .map() uniquement pour les tableau, adapté niveau puissance ---------------');
+        cars.map(function(car, index, tab){
+            console.log(car, index, tab);
+            
+        });
+        
+        </script>
 </head>
 
 <body>
