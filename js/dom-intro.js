@@ -34,5 +34,13 @@ window.addEventListener('DOMContentLoaded', function(){
     répérez le click sur le bouton "testez-moi" et au click afficher un message dans la console
     */
 
+    const buttonTest = document.querySelector('.test');
+    console.log(buttonTest);
+
+    buttonTest.addEventListener('click', function(){
+        console.log(this.innerText);
+        console.log(buttonTest.innerText);
+    });
+    
     
 });

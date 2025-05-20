@@ -55,13 +55,16 @@
             <h2 id="titre-principal">DOM Introduction</h2>
             <h3>Document Object Model</h3>
             <p class="stupid">
-                Tous les éléments de la page sont des objets, et ils ont tous la même structure : mêmes attributs et mêmes méthodes, la différence est dans les valeurs contenues ou non de ces attributs.
+                Tous les éléments de la page sont des objets, et ils ont tous la même structure : mêmes attributs et
+                mêmes méthodes, la différence est dans les valeurs contenues ou non de ces attributs.
             </p>
             <p>
                 Il faut, pour repérer les éléments avec javascript, que toutes la page soit chargée
             </p>
             <p>
-                Quand une page web a fini de cherger tous ses éléments, la fenêtre où apparaît le document envoit l'événement "DOMContentLoaded". En surveillant cet événement, on est capable de faire lire les scripts JS après le chargement complet de la page
+                Quand une page web a fini de cherger tous ses éléments, la fenêtre où apparaît le document envoit
+                l'événement "DOMContentLoaded". En surveillant cet événement, on est capable de faire lire les scripts
+                JS après le chargement complet de la page
             </p>
             <p>
                 <button class="btn btn-outline-secondary test">
@@ -74,6 +77,35 @@
                 <li>test</li>
                 <li>test</li>
             </ul>
+            <h3 class="titreDeChapitre">Agir sur le DOM</h3>
+            <h4>Connaître l'élément surveillé l'élément du DOM, de la page</h4>
+            <h5>getElementById()</h5>
+            <p>
+                Si l'élément dans la page possède un attribut id (<b>QUI DOIT ÊTRE UNIQUE !</b>), il est possible
+                d'intervenir dessus ou de le "récupérer" dans une variable (en gros la variable sert d'alias pour le
+                manipulé, il s'agit d'une référence à l'élément).
+            </p>
+            <p class="special">
+                <button id="cliquezMoi">Cliquez moi !</button>
+            </p>
+            <h4>Connaître l'événement écouté : le déclencheur</h4>
+            <p class="special">
+                <button class="" id="checkP">
+                    Tester les paragraphes
+                </button>
+            </p>
+            <div id="showP">
+
+            </div>
+            <p class="special">
+                Lorem ipsum dolor sit amet
+                consectetur adipisicing elit.
+                Nihil hic numquam magnam ullam,
+                ea odio illo doloremque molestias
+                accusamus corporis corrupti doloribus
+                ab! Mollitia provident quibusdam libero,
+                fugit a perferendis.
+            </p>
         </article>
     </main>
     <footer>
@@ -93,6 +125,7 @@
 </body>
 <script>
     console.log('page chargée');
-    
+
 </script>
+
 </html>
