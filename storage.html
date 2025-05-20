@@ -11,9 +11,7 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
-    <script>
-        
-    </script>
+    <script src="./js/storage.js"></script>
 </head>
 
 <body>
@@ -35,9 +33,7 @@
                     </ul>
                 </li>
                 <li>
-                <li>
                     Le DOM
-                </li>
                 </li>
                 <li>
                     AJAX
@@ -69,7 +65,7 @@
                     <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameDelete()">Effacer</button>
                 </p>
                 <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameClear()">Effacer</button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameClear()">Vider les variables de session</button>
                 </p>
             </article>
             <article class="col-lg-6">
@@ -97,6 +93,21 @@
             <article>
                 <h2>Storage</h2>
                 <h3>Cookies</h3>
+                <p>
+                    <label>Username</label>
+                    <input type="text" class="form-control" id="cookieUser" >
+                </p>
+                <p>
+                    Username enregistré : <span id="cookieUserLogged"></span>
+                </p>
+                <p>
+                    <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameLogged()">
+                        Enregistrer
+                    </button>
+                </p>
+                <p>
+                    <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameDelete()">supprimer</button>
+                </p>
             </article>
         </section>
     </main>
@@ -105,6 +116,11 @@
             &copy; DAWAN - 05-2025
         </div>
     </footer>
+    <script>
+        checkSessionUser();
+        checkLocalUser();
+        checkCookieUser();
+    </script>
 </body>
 
 </html>
