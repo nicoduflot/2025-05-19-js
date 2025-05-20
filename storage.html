@@ -52,7 +52,7 @@
     </nav>
     <main class="container">
         <section class="row">
-            <article class="col-lg-6">
+            <article class="col-md-6 col-lg-4">
                 <h2>Storage</h2>
                 <h3>Session Storage</h3>
                 <p>
@@ -63,18 +63,16 @@
                     Username enregistré : <span id="sessionUserLogged"></span>
                 </p>
                 <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameLogged()">
-                        Enregistrer
-                    </button>
-                </p>
-                <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameDelete()">Effacer</button>
-                </p>
-                <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameClear()">Vider les variables de session</button>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameLogged()">
+                            Enregistrer
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameDelete()">Effacer</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameClear()">Vider la session</button>
+                    </div>
                 </p>
             </article>
-            <article class="col-lg-6">
+            <article class="col-md-6 col-lg-4">
                 <h2>Storage</h2>
                 <h3>Local Storage</h3>
                 <p>
@@ -85,18 +83,16 @@
                     Username enregistré : <span id="localUserLogged"></span>
                 </p>
                 <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="localUserNameLogged()">
-                        Enregistrer
-                    </button>
-                </p>
-                <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="localUserNameDelete()">Effacer</button>
-                </p>
-                <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="localUserNameClear()">Effacer</button>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-primary btn-sm" onclick="localUserNameLogged()">
+                            Enregistrer
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="localUserNameDelete()">Effacer</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="localUserNameClear()">Effacer</button>
+                    </div>
                 </p>
             </article>
-            <article>
+            <article class="col-md-6 col-lg-4">
                 <h2>Storage</h2>
                 <h3>Cookies</h3>
                 <p>
@@ -107,12 +103,12 @@
                     Username enregistré : <span id="cookieUserLogged"></span>
                 </p>
                 <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameLogged()">
-                        Enregistrer
-                    </button>
-                </p>
-                <p>
-                    <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameDelete()">supprimer</button>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameLogged()">
+                            Enregistrer                            
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameDelete()">supprimer</button>
+                    </div>
                 </p>
             </article>
         </section>
