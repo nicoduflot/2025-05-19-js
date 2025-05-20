@@ -54,6 +54,31 @@ window.addEventListener('DOMContentLoaded', function(){
         para.addEventListener('click', function(){
             this.classList.toggle('fondGris');
             /* Maintenant, il faut écrire dans la div avec l'id showP le texte contenu dans le paragraphe cliqué */
+            document.getElementById('showP').innerText = this.innerText;
         });
     });
+
+    /* repérer l'image et l'abonner à l'événement souris qui entre dans son "périmètre" (la surface que l'image occupe sur la page) */
+
+    const imgOver = document.getElementById('img-over');
+    imgOver.addEventListener('mouseenter', function(){
+        this.setAttribute('src', './images/pip-boy-thumb-up.png');
+        if(this.nextElementSibling){
+            this.nextElementSibling.innerText = 'Pip boy pouce en l\'air'
+        }
+        if(this.previousElementSibling){
+            this.previousElementSibling.innerText = 'Pip boy pouce en l\'air'
+        }
+    });
+    imgOver.addEventListener('mouseleave', function(){
+        this.setAttribute('src', './images/pip-boy-thumb-down.png');
+        if(this.nextElementSibling){
+            this.nextElementSibling.innerText = 'Pip boy pouce en bas';
+        }
+        if(this.previousElementSibling){
+            this.previousElementSibling.innerText = 'Pip boy pouce en bas';
+        }
+    });
+
+
 });
