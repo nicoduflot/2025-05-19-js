@@ -11,7 +11,7 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
-    <script>
+    <script src="./js/creation-dom.js">
         
     </script>
 </head>
@@ -53,15 +53,119 @@
         </div>
     </nav>
     <main class="container">
-        <article>
-            <h2>Créer dans le DOM</h2>
-            <p>
-                C'est une façon d'assigner des valeurs aux variables
-            </p>
-            <p>
-                Tout est dans la console
-            </p>
-        </article>
+        <section class="row">
+            <article class="col-md-6">
+                <h2>Créer dans le DOM</h2>
+                <h3>.createElement()</h3>
+                <div id="conteneur">
+            
+                </div>
+                <h3>Cible d'événement</h3>
+                <table class="table table-bordered">
+                    <tr data-line="01">
+                        <td data-col="01">&nbsp;</td>
+                        <td data-col="02">&nbsp;</td>
+                        <td data-col="03">&nbsp;</td>
+                        <td data-col="04">&nbsp;</td>
+                        <td data-col="05">&nbsp;</td>
+                    </tr>
+                    <tr data-line="02">
+                        <td data-col="01">&nbsp;</td>
+                        <td data-col="02">&nbsp;</td>
+                        <td data-col="03">&nbsp;</td>
+                        <td data-col="04">&nbsp;</td>
+                        <td data-col="05">&nbsp;</td>
+                    </tr>
+                    <tr data-line="03">
+                        <td data-col="01">&nbsp;</td>
+                        <td data-col="02">&nbsp;</td>
+                        <td data-col="03">&nbsp;</td>
+                        <td data-col="04">&nbsp;</td>
+                        <td data-col="05">&nbsp;</td>
+                    </tr>
+                    <tr data-line="04">
+                        <td data-col="01">&nbsp;</td>
+                        <td data-col="02">&nbsp;</td>
+                        <td data-col="03">&nbsp;</td>
+                        <td data-col="04">&nbsp;</td>
+                        <td data-col="05">&nbsp;</td>
+                    </tr>
+                    <tr data-line="05">
+                        <td data-col="01">&nbsp;</td>
+                        <td data-col="02">&nbsp;</td>
+                        <td data-col="03">&nbsp;</td>
+                        <td data-col="04">&nbsp;</td>
+                        <td data-col="05">&nbsp;</td>
+                    </tr>
+                </table>
+                <h3>Stop Propagation</h3>
+                <div id="stopP01">
+                    <button>Clic</button>
+                </div>
+                <div id="stopP02">
+                    <button>Clic</button>
+                </div>
+                <h3>PreventDefault()</h3>
+                <p>
+                    <a href="#" id="toto" class="testPreventLink">toto</a> 
+                    <a href="#" id="tata" class="testPreventLink">tata</a> 
+                    <a href="#" id="titi" class="testPreventLink">titi</a> 
+                </p>
+                <h4>TD : ajouter des span dans le &lt;p&gt;</h4>
+                <p>
+                    <button id="addSpan">
+                        Ajouter un span dans le paragraphe.
+                    </button>
+                </p>
+                <p id="test">
+                    
+                </p>
+            </article>
+            <article class="col-md-6">
+                <h2>To do list</h2>
+                <p>
+                    On écrit un élément de la liste dans le champ, on clique sur "ajouter". Un élément li est ajouté, si on clique dessus il est supprimé. 
+                    Quand on ajoute un élément, on véifie que le champ n'est pas vide, une fois ajouté le champs est vidé.
+                </p>
+                <input type="text" id="listItem" />
+                <button id="addItem">Ajouter</button>
+            </article>
+            <article class="col-md-6">
+                <h2>Ma liste</h2>
+                <div id="liste">
+                    <ul id="toDoList">
+
+                    </ul>
+                </div>
+            </article>
+            <article class="col-md-6">
+                <h2>Prevent Default sur un formulaire</h2>
+                <form id="formValid">
+                    <div class="alertFormValid hidden">
+                        Des informations sont manquantes
+                    </div>
+                    <fieldset>
+                        <legend>Civilité</legend>
+                        <p>
+                            <label class="form-label">Nom : </label>
+                            <input class="form-control" type="text" name="nom" />
+                        </p>
+                        <p>
+                            <label class="form-label">Prénom : </label>
+                            <input class="form-control" type="text" name="prenom" />
+                        </p>
+                        <p>
+                            <button type="submit">
+                                Soumettre
+                            </button>
+                            <button type="reset">
+                                Vider le formulaire
+                            </button>
+                        </p>
+                    </fieldset>
+                </form>
+            </article>
+        </section>
     </main>
     <footer>
         <div class="container">
