@@ -12,50 +12,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <script>
-        const list = [1, 2, 3, 4];
-        /*
-        assigner les trois permières valeurs du tableau aux variables suivantes : 
-        a, b et c
-        const a = list[0];
-        const b = list[1];
-        const c = list[2];
-        */
-
-        const [a, b, c] = list;
-        console.log(`a : ${a}, b : ${b}, c: ${c}`);
-
-        const [d, , f, g] = list;
-        console.log(`d : ${d}, f : ${f}, g: ${g}`);
-
-        const [h, i, j, k = 0, l = 5] = list;
-        console.log(`h : ${h}, i : ${i}, j: ${j}, k: ${k}, j: ${l}`);
-
-        function truc(unTruc = 12, uneOption = false, ...valeurs) {
-            const [a = 0, b = false, c = 'compta'] = valeurs;
-            console.log(unTruc, uneOption, a, b, c);
-            console.log(valeurs);
-        }
-
-        truc();
-        truc(13, true, 123.03, 'deeb', 101, 56, 42);
-
-        /* échanger des valeurs entre variables */
-        let var01 = 12;
-        let var02 = 58;
-
-        console.log(var01, var02);
-        /* 
-        Comment échanger les valeurs sans la décomposition
         
-        let tampon = var01;
-        var01 = var02;
-        var02 = tampon;
-        */
-        [var01, var02] = [var02, var01];
-        console.log(var01, var02);
-
-
-
     </script>
 </head>
 
@@ -97,7 +54,7 @@
     </nav>
     <main class="container">
         <article>
-            <h2>La destructuration</h2>
+            <h2>DOM Introduction</h2>
             <p>
                 C'est une façon d'assigner des valeurs aux variables
             </p>
