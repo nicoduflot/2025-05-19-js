@@ -1,23 +1,36 @@
 /* sélecteur css balise */
+/*
 body{
     background-color: antiquewhite;
 }
-
+*/
 /* sélecteur selon une classe */
+/*
 .stupid{
     background-color: bisque;
 }
-
+*/
 /* sélecteur selon l'id */
+/*
 #titre-principal{
     color: darkred;
 }
-
+*/
 /* combinaison de sélecteur selon leur place dans la structure */
+/*
 main ul{
     font-size: 1.1rem;
 }
 
 footer > div ul{
     color: darkred;
+}
+
+p:not(p.stupid){
+    color: darkblue;
+}
+*/
+
+.fondGris{
+    background-color: rgba(0, 0, 0, 0.2);
 }

@@ -37,10 +37,23 @@ window.addEventListener('DOMContentLoaded', function(){
     const buttonTest = document.querySelector('.test');
     console.log(buttonTest);
 
-    buttonTest.addEventListener('click', function(){
+    buttonTest.addEventListener('click', function(event){
+        event.stopPropagation();
         console.log(this.innerText);
-        console.log(buttonTest.innerText);
+        /*console.log(buttonTest.innerText);*/
     });
+
+    console.log(document.querySelectorAll('main'));
+    console.log(document.querySelectorAll('.container'));
     
+    console.log(document.querySelector('p:not(p.stupid)'));
+    console.log(document.querySelectorAll('p:not(p.stupid)'));
+    console.log(document.querySelectorAll('p:not(.stupid)'));
     
+    document.querySelectorAll('p:not(.special)').forEach(function(para){
+        para.addEventListener('click', function(){
+            this.classList.toggle('fondGris');
+            /* Maintenant, il faut écrire dans la div avec l'id showP le texte contenu dans le paragraphe cliqué */
+        });
+    });
 });
