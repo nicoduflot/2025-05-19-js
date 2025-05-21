@@ -34,3 +34,19 @@ p:not(p.stupid){
 .fondGris{
     background-color: rgba(0, 0, 0, 0.2);
 }
+
+#carre{
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    margin: 20px auto;
+    transform: transform 1s;
+}
+
+.gauche{
+    transform: translateX( calc( -1 * ( 50vw - 100px ) ) );
+}
+
+.droite{
+    transform: translateX( calc(  50vw - 100px ) );
+}
