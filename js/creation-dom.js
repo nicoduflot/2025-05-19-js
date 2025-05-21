@@ -192,6 +192,20 @@ window.addEventListener('DOMContentLoaded', function(){
         }else{
             /* contrôle et identification des champs vides */
             console.log(nom.value, prenom.value);
+            if(nom.value === ''){
+                nom.classList.add('border', 'border-danger');
+                document.getElementById(nom.getAttribute('aria-describedby')).classList.remove('visually-hidden');
+            }else{
+                nom.classList.remove('border', 'border-danger');
+                document.getElementById(nom.getAttribute('aria-describedby')).classList.add('visually-hidden');
+            }
+            if(prenom.value === ''){
+                prenom.classList.add('border', 'border-danger');
+                document.getElementById(prenom.getAttribute('aria-describedby')).classList.remove('visually-hidden');
+            }else{
+                prenom.classList.remove('border', 'border-danger');
+                document.getElementById(prenom.getAttribute('aria-describedby')).classList.add('visually-hidden');
+            }
         }
         
     });

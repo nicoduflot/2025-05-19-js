@@ -148,12 +148,18 @@
                         <legend>Civilité</legend>
                         <p>
                             <label class="form-label">Nom : </label>
-                            <input class="form-control" type="text" name="nom" required />
+                            <input class="form-control" type="text" name="nom" required aria-describedby="info-nom" />
                         </p>
+                        <div id="info-nom" class="alert alert-danger visually-hidden">
+                            Le champ nom est obligatoire, veuillez inscrire votre nom usuel
+                        </div>
                         <p>
                             <label class="form-label">Prénom : </label>
-                            <input class="form-control" type="text" name="prenom" required />
+                            <input class="form-control" type="text" name="prenom" required aria-describedby="info-prenom" />
                         </p>
+                        <div id="info-prenom" class="alert alert-danger visually-hidden">
+                            Le champ prénom est obligatoire, veuillez inscrire votre nom usuel
+                        </div>
                         <p>
                             <button class="btn btn-primary" type="submit">
                                 Soumettre
