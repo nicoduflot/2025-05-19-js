@@ -67,6 +67,18 @@ window.addEventListener('DOMContentLoaded', function(){
     il s'agit de la manipulation de classe associé à au carré
     */
 
+    const carre = document.getElementById('carre');
+    document.getElementById('gauche').addEventListener('click',function(){
+        carre.classList.remove('droite');
+        carre.classList.add('gauche');
+    });
+    document.getElementById('centre').addEventListener('click',function(){
+        carre.classList.remove('droite', 'gauche');
+    });
+    document.getElementById('droite').addEventListener('click',function(){
+        carre.classList.remove('gauche');
+        carre.classList.add('droite');
+    });
     
 
 });

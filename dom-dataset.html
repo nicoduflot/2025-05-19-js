@@ -53,15 +53,236 @@
         </div>
     </nav>
     <main class="container">
-        <article>
-            <h2>Dataset</h2>
-            <p>
-                C'est une façon d'assigner des valeurs aux variables
-            </p>
-            <p>
-                Tout est dans la console
-            </p>
-        </article>
+        <section class="row">
+            <article>
+                <h2 data-title="Les attributs data">
+                    Les attributs data - (dataset)
+                </h2>
+                <p>
+                    Les attributs data- sont des attributs HTML dynamiques.
+                    Ce qui est dynamique : leurs noms et les valeurs qu'ils possèdent.
+                    Pour les utiliser, on crée dans la balise un attribut avec la forme suivante :
+                    <code>data-*="..."</code>, * sera le nom du dataset, ... sa valeur.
+                    par exemple <br />
+                    <code>
+                        &lt;img data-over="../images/test.png" src="../images/test-img.png" data-test="test" /&gt;
+                    </code><br />
+                    pour atteindre ce dataset : <br />
+                    <code>
+                        let urlOver = document.querySelector('img[data-over][data-test="test"]').dataset.over;
+                    </code>
+                </p>
+            </article>
+            <article class="col-md-6">
+                <h3>
+                    Utiliser un switch
+                </h3>
+                <hr />
+                <p data-module="color">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="color" data-color="#09f">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="color" data-color="orange">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="font" data-weight="bold">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="magie">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing &nbsp;elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="after">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+            </article>
+            <article class="col-md-6">
+                <h3>Créer un menu "glissant"</h3>
+                <hr />
+                <p>
+                    <button class="toggle-menu" data-target="#testSlide">
+                        Afficher le menu glissant 1
+                    </button>
+                </p>
+                <nav class="slide-menu" id="testSlide">
+                    <p>
+                        Menu 1
+                    </p>
+                    <ul>
+                        <li><a href="#">lien</a></li>
+                        <li><a href="#">lien</a></li>
+                        <li><a href="#">lien</a></li>
+                    </ul>
+                </nav>
+                <hr />
+                <p>
+                    <button class="toggle-menu" data-target="#testSlide2">
+                        Afficher le menu glissant 2
+                    </button>
+                </p>
+                <nav class="slide-menu" id="testSlide2">
+                    <p>
+                        Menu 2
+                    </p>
+                    <ul>
+                        <li><a href="#">lien</a></li>
+                        <li><a href="#">lien</a></li>
+                        <li><a href="#">lien</a></li>
+                    </ul>
+                </nav>
+            </article>
+            <article class="col-md-6">
+                <h3>Les datasets et l'interactivité</h3>
+                <hr />
+                <p>
+                    Coordonnées : <span id="xy">x : &nbsp; - y : &nbsp;</span>
+                </p>
+
+                <p>
+                    <label>X : </label><input id="xValue" type="range" min="0" max="4" step="1" value="0" /><br />
+                    <label>y : </label><input id="yValue" type="range" min="0" max="4" step="1" value="0" />
+                </p>
+
+                <table id="coord" class="table table-bordered" style="width: 300px;">
+                    <tr>
+                        <td data-column="0" data-line="0">0 - 0</td>
+                        <td data-column="1" data-line="0">1 - 0</td>
+                        <td data-column="2" data-line="0">2 - 0</td>
+                        <td data-column="3" data-line="0">3 - 0</td>
+                        <td data-column="4" data-line="0">4 - 0</td>
+                    </tr>
+                    <tr>
+                        <td data-column="0" data-line="1">0 - 1</td>
+                        <td data-column="1" data-line="1">1 - 1</td>
+                        <td data-column="2" data-line="1">2 - 1</td>
+                        <td data-column="3" data-line="1">3 - 1</td>
+                        <td data-column="4" data-line="1">4 - 1</td>
+                    </tr>
+                    <tr>
+                        <td data-column="0" data-line="2">0 - 2</td>
+                        <td data-column="1" data-line="2">1 - 2</td>
+                        <td data-column="2" data-line="2">2 - 2</td>
+                        <td data-column="3" data-line="2">3 - 2</td>
+                        <td data-column="4" data-line="2">4 - 2</td>
+                    </tr>
+                    <tr>
+                        <td data-column="0" data-line="3">0 - 3</td>
+                        <td data-column="1" data-line="3">1 - 3</td>
+                        <td data-column="2" data-line="3">2 - 3</td>
+                        <td data-column="3" data-line="3">3 - 3</td>
+                        <td data-column="4" data-line="3">4 - 3</td>
+                    </tr>
+                    <tr>
+                        <td data-column="0" data-line="4">0 - 4</td>
+                        <td data-column="1" data-line="4">1 - 4</td>
+                        <td data-column="2" data-line="4">2 - 4</td>
+                        <td data-column="3" data-line="4">3 - 4</td>
+                        <td data-column="4" data-line="4">4 - 4</td>
+                    </tr>
+                </table>
+                <h3>Grille de puissance 4</h3>
+                <table id="p4" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th data-col="1" class="text-center"> &darr; </th>
+                            <th data-col="2" class="text-center"> &darr; </th>
+                            <th data-col="3" class="text-center"> &darr; </th>
+                            <th data-col="4" class="text-center"> &darr; </th>
+                            <th data-col="5" class="text-center"> &darr; </th>
+                            <th data-col="6" class="text-center"> &darr; </th>
+                            <th data-col="7" class="text-center"> &darr; </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-col="1" data-row="1">&nbsp;</td>
+                            <td data-col="2" data-row="1">&nbsp;</td>
+                            <td data-col="3" data-row="1">&nbsp;</td>
+                            <td data-col="4" data-row="1">&nbsp;</td>
+                            <td data-col="5" data-row="1">&nbsp;</td>
+                            <td data-col="6" data-row="1">&nbsp;</td>
+                            <td data-col="7" data-row="1">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="2">&nbsp;</td>
+                            <td data-col="2" data-row="2">&nbsp;</td>
+                            <td data-col="3" data-row="2">&nbsp;</td>
+                            <td data-col="4" data-row="2">&nbsp;</td>
+                            <td data-col="5" data-row="2">&nbsp;</td>
+                            <td data-col="6" data-row="2">&nbsp;</td>
+                            <td data-col="7" data-row="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="3">&nbsp;</td>
+                            <td data-col="2" data-row="3">&nbsp;</td>
+                            <td data-col="3" data-row="3">&nbsp;</td>
+                            <td data-col="4" data-row="3">&nbsp;</td>
+                            <td data-col="5" data-row="3">&nbsp;</td>
+                            <td data-col="6" data-row="3">&nbsp;</td>
+                            <td data-col="7" data-row="3">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="4">&nbsp;</td>
+                            <td data-col="2" data-row="4">&nbsp;</td>
+                            <td data-col="3" data-row="4">&nbsp;</td>
+                            <td data-col="4" data-row="4">&nbsp;</td>
+                            <td data-col="5" data-row="4">&nbsp;</td>
+                            <td data-col="6" data-row="4">&nbsp;</td>
+                            <td data-col="7" data-row="4">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="5">&nbsp;</td>
+                            <td data-col="2" data-row="5">&nbsp;</td>
+                            <td data-col="3" data-row="5">&nbsp;</td>
+                            <td data-col="4" data-row="5">&nbsp;</td>
+                            <td data-col="5" data-row="5">&nbsp;</td>
+                            <td data-col="6" data-row="5">&nbsp;</td>
+                            <td data-col="7" data-row="5">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="6">&nbsp;</td>
+                            <td data-col="2" data-row="6">&nbsp;</td>
+                            <td data-col="3" data-row="6">&nbsp;</td>
+                            <td data-col="4" data-row="6">&nbsp;</td>
+                            <td data-col="5" data-row="6">&nbsp;</td>
+                            <td data-col="6" data-row="6">&nbsp;</td>
+                            <td data-col="7" data-row="6">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
     </main>
     <footer>
         <div class="container">
