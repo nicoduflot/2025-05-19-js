@@ -95,6 +95,105 @@ window.addEventListener('DOMContentLoaded', function(){
     guetter le clic sur le bouton addSpan, créer une span avec du texte dedans et l'ajouter au paragraphe avec l'id test
     */
 
-    
+    let cptSpan = 0;
+    document.getElementById('addSpan').addEventListener('click', function(){
+        const span = document.createElement('span');
+        cptSpan = cptSpan + 1;
+        span.innerText = `toto ${cptSpan}`;
+        span.classList.add('m-1', 'p-2', 'bg-secondary', 'col-2');
+        document.getElementById('test').append(span);
+        span.addEventListener('click', function(){
+            this.remove();
+        });
+    });
+
+    /*
+    to do list : surveiller deux événements différents : 
+    quand on appuie sur la touche entrée quand le curseur de saisi est dans l'élément de formulaire avec l'id listItem
+    Surveiller le click sur le bouton avec l'id addItem
+
+    quand l'un ou l'autres des événements intervient, il faut vérifier que l'attribut value de l'élément de formulaire contienne au moins un caractère (non vide), dans ce cas, on crée un élément de liste (li) qu'on ajoute à la liste (ul) avec l'id toDoList
+
+    cela implique de créer une fonction pour la création d'et l'ajout de l'élément de liste, et c'est cette fonction qu'on déclenche lors des événements surveillés
+    */
+
+    /* contrôle de la touche entrée saisie dans le champs de saisie */
+    document.getElementById('listItem').addEventListener('keyup', function(event){
+        event.stopPropagation();
+        if(event.key === 'Enter'){
+            addItemList();
+        }
+    });
+
+    /* surveiller le clic sur le bouton et virification du champs de saisie si non vide */
+    document.getElementById('addItem').addEventListener('click', addItemList);
+    /* quand on appelle directement une fonction (et pas une fonction de rappel anonyme) a éxécuter lors de l'événement, il ne faut pas écrire les parenthèse de la fonction nommée, sinon JS pense qu'il d'une fonction de rappel anonyme défectueuse */
+
+    /* fonction d'ajout dans la liste si le champs n'est pas vide */
+    function addItemList(){
+        /* si le champ n'est pas vide */
+        if(document.getElementById('listItem').value !== ''){
+            /* on crée un balise li */
+            const li = document.createElement('li');
+            /* on ajoute une classe pour le regroupement d'élément de liste bootstrap */
+            li.classList.add('list-group-item');
+            /* on crée un noeud de text contenant la valeur du champ de saisie qu'on ajourte en enfant dans li */
+            li.append(document.createTextNode(document.getElementById('listItem').value));
+            /* on ajoute li dans la liste */
+            document.getElementById('toDoList').append(li);
+            /* on vide le champ de saisie poue une nouvelle saisie */
+            document.getElementById('listItem').value = '';
+            /* on surveille le clic sue la li créée */
+            li.addEventListener('click', function(event){
+                /* on stoppe la propagation du clic */
+                event.stopPropagation();
+                /* si la li à l'attribut style */
+                if(this.hasAttribute('style')){
+                    /* on supprime l'attribut */
+                    this.removeAttribute('style');
+                }else{
+                    /* sinon on ajoute la propriété css line-through en créant l'attribut style */
+                    this.style.setProperty('text-decoration', 'line-through');
+                }
+            });
+            /* on crée un bouton de fermeture */
+            const closeButton = document.createElement('button');
+            /* les attributs et classes bootstrap sont ajouté pour l'affichage*/
+            closeButton.setAttribute('aria-label', 'close');
+            closeButton.classList.add('btn-close', 'float-end');
+            /* on ajoute le bouton à la suite du noeud de texte */
+            li.append(closeButton);
+            /* on surveille le clic */
+            closeButton.addEventListener('click', function(event){
+                /* stop progation clic */
+                event.stopPropagation();
+                /* on supprime l'élément parent */
+                this.parentElement.remove();
+                /* on supprime le bouton */
+                this.remove();
+            });
+        }
+    }
+
+    /* vérification de formulaire */
+    /*
+    - surveiller le clic sur le bouton type submit
+    - récupérer l'événement
+    - arrête le comportement par défaut de lévénement de formulaire submit (preventDefault)
+    - vérifier que les deux champs soient non vide
+    - si les deux ne sont pas vide, applique la méthode submit au formulaire
+    */
+    document.querySelector('#formValid button[type="submit"]').addEventListener('click', function(event){
+        event.preventDefault();
+        const nom = document.querySelector('#formValid input[name="nom"]');
+        const prenom = document.querySelector('#formValid input[name="prenom"]');
+        if(nom.value !== '' && prenom.value !== ''){
+            document.querySelector('#formValid').submit();
+        }else{
+            /* contrôle et identification des champs vides */
+            console.log(nom.value, prenom.value);
+        }
+        
+    });
 
 });
