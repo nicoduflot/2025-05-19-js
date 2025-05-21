@@ -42,4 +42,31 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     });
 
+    document.getElementById('btnProperty').addEventListener('click', function(){
+        const cible = document.getElementById('cibleProperty');
+        if(cible.style.cssText === ''){
+            cible.style.setProperty('background-color', 'rgba(0, 0, 0, 0.2)');
+            cible.style.setProperty('color', 'rgb(255, 0, 0)');
+            cible.style.setProperty('font-size', '1.1rem');
+        }else{
+            console.log(cible.style.cssText);
+            const tabProperty = cible.style.cssText.split('; ');
+            console.log(tabProperty);
+            tabProperty.map(function(prop){
+                const tab = prop.split(': ');
+                cible.style.removeProperty(tab[0]);
+            });
+            console.log(cible.style.cssText);
+        }
+    });
+
+    /*
+    
+    Mini exercice
+    Faire bouger le carré orange quand on clique sur les bouton : 
+    il s'agit de la manipulation de classe associé à au carré
+    */
+
+    
+
 });
