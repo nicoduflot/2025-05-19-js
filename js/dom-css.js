@@ -25,12 +25,21 @@ window.addEventListener('DOMContentLoaded', function(){
 
     /*
     exercice : 
-    quand on clicque sur le bouton id btn, l'apparence du paragraphe id cible change
+    quand on clique sur le bouton id btn, l'apparence du paragraphe id cible change
 
     si il y a une bordure, elle disparaît, sinon, la bordure doit avoir comme propriétés : 
     border-style: dashed
     border-color: black
     border-width: 2px
     */
+
+   document.getElementById('btn').addEventListener('click', function(){
+        const cible = document.getElementById('cible');
+        if(cible.hasAttribute('style')){
+            cible.removeAttribute('style');
+        }else{
+            cible.style.border = '2px dashed black';
+        }
+    });
 
 });
