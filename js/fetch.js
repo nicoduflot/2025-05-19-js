@@ -95,7 +95,34 @@ function jsonToTable(data){
     return table;
 }
 
+function jsonSearch(data, searchTerm){
+    let tabData = [];
+    if (!Array.isArray(data)) {
+        tabData.push(data);
+    } else {
+        tabData = data.slice();
+    }
+    let result = [];
+    let lineOk = false;
+    for (enreg of tabData) {
+        for (key in enreg) {
+            if ((typeof enreg[key]) !== 'object') {
+                const info = (enreg[key].toString()).toLowerCase()
+                if(info.indexOf(searchTerm) > -1){
+                    lineOk = true;
+                }
+            }
+        }
+        if(lineOk){
+            result.push(enreg);
+            lineOk = false;
+        }
+    }
+    return result;
+}
+
 window.addEventListener('DOMContentLoaded', function () {
+    /* recherche d'une ressource en ajax */
     document.querySelectorAll('button.read').forEach(function (button) {
         button.addEventListener('click', function () {
             const url = this.dataset.url;
@@ -118,6 +145,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 });
         });
     });
+
+    /* afficher la ligne des tableaux générés par le recherche de ressources */
     document.getElementById('result').addEventListener('click', function(event){
         /* l'événement clic nous permet de trouver la cible du clic, on peut retrouver l'élément parent de la cible, comme il s'agit d'un tableau, la cible est une td ou un th */
         if(event.target.tagName !== 'TH'){
@@ -125,6 +154,23 @@ window.addEventListener('DOMContentLoaded', function () {
             for(value of line){
                 console.log(`${value.dataset.key} :  ${value.innerText}`);
             }
+        }
+    });
+
+    /* chercher un renregistrement contenant une chaîne de caractère entrée dans un champ de saisie */
+    document.querySelector('.search').addEventListener('click', function(){
+        const url = './ressources/users.json';
+        const searchTerm = document.querySelector('input[name="search"').value.toLowerCase();
+        if(searchTerm !== ''){
+            console.log(searchTerm);
+            fetch(url)
+            .then(function(reponse){
+                return reponse.json();
+            })
+            .then(function(data){
+                const results = jsonSearch(data, searchTerm);
+                document.getElementById('resultSearch').append(jsonToTable(results));
+            })
         }
     });
 });
