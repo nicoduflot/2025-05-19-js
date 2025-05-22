@@ -107,4 +107,28 @@ window.addEventListener('DOMContentLoaded', function(){
         });
     });
 
+    /*
+    on surveille le clic sur les entête de colonne
+    */
+
+    let colorNow = 'bg-danger';
+    document.querySelectorAll('#p4 th').forEach(function(th){
+        let colonne = 0;
+        th.addEventListener('click', function(){
+            colonne = this.dataset.col;
+            for(i = 6; i > 0; i = i - 1){
+                const cell = document.querySelector(`td[data-col="${colonne}"][data-row="${i}"]`);
+                if( !cell.classList.contains('bg-danger') &&  !cell.classList.contains('bg-warning')){
+                    cell.classList.add(colorNow);
+                    /*
+                    on va changer la couleur à l'aide d'un ternaire
+                    let a = (condition a vérifier)? traitement si vrai : traitement si faux;
+                    */
+                    colorNow = (colorNow === 'bg-danger')? 'bg-warning': 'bg-danger';
+                    break;
+                }
+            }
+        });
+    });
+
 });
