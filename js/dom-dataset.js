@@ -64,5 +64,39 @@ window.addEventListener('DOMContentLoaded', function(){
     on reprère l'élément parent du bouton
     on remove la classe toggle-element du parent
     */
+    document.querySelectorAll('.slide-menu button.btn-close').forEach(function(button){
+        button.addEventListener('click', function(){
+            this.parentElement.classList.remove('toggle-element');
+        });
+    });
+
+    /* 
+    Interactivité sur un tableau
+    parcourir toutes les td du tableau id coord, abonner chaque td aux événements mouseenter et mouseleave
+        - mouseenter : on récupère les dataset de la td column et line
+        on applique à chaque td ayant la même colonne un background color rgba(255,0,0,0.5)
+        on applique à la tr parent le même background color
+
+        - mouseleave :  on récupère les dataset de la td column et line
+        on retire le background color des td avec le meme dataset column
+        on retire le background de la tr parente
+    */
+    document.querySelectorAll('#coord td').forEach(function(td){
+        td.addEventListener('mouseenter', function(){
+            const column = this.dataset.column;
+            document.querySelectorAll(`#coord td[data-column="${column}"]`).forEach(function(tdy){
+                tdy.style.setProperty('background-color', 'rgba(255,0,0,0.5)');
+            });
+            this.parentElement.style.setProperty('background-color', 'rgba(255,0,0,0.5)');
+        });
+        
+        td.addEventListener('mouseleave', function(){
+            const column = this.dataset.column;
+            document.querySelectorAll(`#coord td[data-column="${column}"]`).forEach(function(tdy){
+                tdy.style.removeProperty('background-color');
+            });
+            this.parentElement.style.removeProperty('background-color');
+        });
+    });
 
 });

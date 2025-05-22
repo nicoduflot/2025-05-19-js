@@ -63,3 +63,7 @@ p:not(p.stupid){
 .toggle-element{
     transform: translateX(350px);
 }
+
+.table>:not(caption)>*>*{
+    background-color: transparent;
+}
