@@ -84,6 +84,10 @@ window.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('#coord td').forEach(function(td){
         td.addEventListener('mouseenter', function(){
             const column = this.dataset.column;
+            const line = this.dataset.line;
+            document.getElementById('xy').innerHTML = `x : ${column} - y : ${line}` ;
+            document.getElementById('xValue').value = column;
+            document.getElementById('yValue').value = line;
             document.querySelectorAll(`#coord td[data-column="${column}"]`).forEach(function(tdy){
                 tdy.style.setProperty('background-color', 'rgba(255,0,0,0.5)');
             });
@@ -92,6 +96,10 @@ window.addEventListener('DOMContentLoaded', function(){
         
         td.addEventListener('mouseleave', function(){
             const column = this.dataset.column;
+            const line = this.dataset.line;
+            document.getElementById('xy').innerHTML = `x : &nbsp; - y : &nbsp;` ;
+            document.getElementById('xValue').value = 0;
+            document.getElementById('yValue').value = 0;
             document.querySelectorAll(`#coord td[data-column="${column}"]`).forEach(function(tdy){
                 tdy.style.removeProperty('background-color');
             });
