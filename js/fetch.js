@@ -39,6 +39,61 @@ function jsonToList(data) {
     return ul;
 }
 
+function jsonToTable(data){
+    let tabData = [];
+    /* un booléen pour vérifier si on est à la première ligne, pour créer le thead du tableau */
+    let firstLine = true;
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+    /* on intègre le thead au tableau */
+    table.append(thead);
+    /* on intègre le tbody au tableau */
+    table.append(tbody);
+    table.classList.add('table');
+    if (!Array.isArray(data)) {
+        tabData.push(data);
+    } else {
+        tabData = data.slice();
+    }
+    /* on crée la ligne d'entête */
+    const trHead = document.createElement('tr');
+    for (enreg of tabData) {
+        /* on crée la ligne d'un enregistrement */
+        const tr = document.createElement('tr');
+        /* on parcours chaque enregistrement */
+        for (key in enreg) {
+            /* on ne traite que les enregistrements qui ne contiennent pas d'objet */
+            if ((typeof enreg[key]) !== 'object') {
+                /* si c'est la première ligne, on aliment l'entête avec de th qui contiennent les clefs */
+                if(firstLine){
+                    const th = document.createElement('th');
+                    th.append(document.createTextNode(key));
+                    /* on ajoute la cellule de tête de colonne à la ligne d'entête */
+                    trHead.append(th);
+                }
+                //console.log(key);   
+                /* on crée les cellule qui contiennent les valeurs des clefs */
+                const td = document.createElement('td');
+                td.append(document.createTextNode(enreg[key]));
+                td.setAttribute('data-key', key);
+                /* on ajoute la cellule à la ligne d'enregistrement */
+                tr.append(td);
+            }
+        }
+        /* si c'est le premier enregistrement */
+        if(firstLine){
+            /* on ajoute la ligne d'entête au thead */
+            thead.append(trHead);
+            /* on indique qu'on passe à unexième ligne */
+            firstLine = false;
+        }
+        /* on ajoute la ligne d'enregistrement au tbody */
+        tbody.append(tr);
+    }
+    /* on renvoi le tableau une fois tous les enregistrements traités */
+    return table;
+}
 
 window.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('button.read').forEach(function (button) {
@@ -51,10 +106,25 @@ window.addEventListener('DOMContentLoaded', function () {
                 })
                 .then(function (data) {
                     document.getElementById('result').innerHTML = '';
-                    document.getElementById('result').append(jsonToList(data));
+                    document.getElementById('result').append(jsonToTable(data));
                 })
-                .catch()
-                .finally();
+                .catch(function(erreur){
+                    console.error(erreur);                    
+                    console.log(erreur.name);                    
+                    console.log(erreur.message);                    
+                })
+                .finally(function(){
+                    console.log('tentative de connexion terminée');
+                });
         });
+    });
+    document.getElementById('result').addEventListener('click', function(event){
+        /* l'événement clic nous permet de trouver la cible du clic, on peut retrouver l'élément parent de la cible, comme il s'agit d'un tableau, la cible est une td ou un th */
+        if(event.target.tagName !== 'TH'){
+            const line = event.target.parentElement.children;
+            for(value of line){
+                console.log(`${value.dataset.key} :  ${value.innerText}`);
+            }
+        }
     });
 });
