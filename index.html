@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <script>
         // commentaire en une ligne
         /*
         commentaire en bloc
         */
-        let prenom='Jean';
+        let prenom = 'Jean';
         console.log(prenom);
         console.log(typeof prenom);
-        
+
         let nom = 'Neige';
         console.log(nom, typeof nom, prenom, typeof prenom);
 
         const laPause = 'CAFÉ ?';
-        
+
         nom = 35;
         console.log(typeof nom);
         nom = nom + 1;
         console.log(nom);
         nom = nom + '2.5';
         console.log(nom, typeof nom);
-        
+
         nom = 35;
         console.log(`Bonjour, ça fait 10 ans que j'ai ${nom + 1} ans`);
-        
+
         const LANGFR = 'fr-FR';
         const LANGEN = 'en-UK';
 
@@ -60,7 +64,7 @@
         const unObj = {
             age: '45',
             nom: 'Duflot',
-            toto: function(){
+            toto: function () {
 
             }
         };
@@ -73,7 +77,7 @@
         }
 
         console.log(unObjJson);
-        
+
         /**
          * Opérateurs
          * 
@@ -101,7 +105,7 @@
         console.log(cpt); // affiche 2
 
         console.log(++cpt); // ajoute 1 à cpt puis l'affiche
-        
+
         /**
          * Logique
          * 
@@ -138,7 +142,7 @@
                     modulo
             var1 puissance var2
         */
-        
+
         const a = 42;
         const b = 66;
 
@@ -151,7 +155,7 @@
         console.log(`${a} - ${b} = ${a - b}`);
         console.log(`${a} / ${b} = ${a / b}`);
         console.log(`${a} % ${b} = ${a % b}`);
-        
+
         /**
          * 
          * Opérateurs de comparaison
@@ -174,11 +178,12 @@
          * '2' !== 2 => vrai
          * 
         */
-        
-        
-        
+
+
+
     </script>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -215,6 +220,26 @@
                 </li>
                 <li>
                     POO
+                    <ul>
+                        <li>
+                            <a href="./poo-index.html" title="POO : Programmation Orientée Objet">POO</a>
+                        </li>
+                        <li>
+                            <a href="./poo-collection.html" title="POO : Les collections">Collections</a>
+                        </li>
+                        <li>
+                            <a href="./poo-module.html" title="POO : modules">Modules</a>
+                        </li>
+                        <li>
+                            <a href="./poo-iterator.html" title="POO : iterator">Iterator</a>
+                        </li>
+                        <li>
+                            <a href="./poo-factory.html" title="POO : Factory">Factory</a>
+                        </li>
+                        <li>
+                            <a href="./poo-class.html" title="POO : classes">Classes</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -267,4 +292,5 @@
         </div>
     </footer>
 </body>
+
 </html>
