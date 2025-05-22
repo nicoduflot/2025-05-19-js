@@ -4,7 +4,7 @@
     "name": "Leanne Graham",
     "username": "Bret",
     "email": "Sincere@april.biz",
-    "address": {
+    "address": [{
       "street": "Kulas Light",
       "suite": "Apt. 556",
       "city": "Lille",
@@ -13,7 +13,7 @@
         "lat": "50.637380",
         "lng": "3.062568"
       }
-    },
+    }],
     "phone": "1-770-736-8031 x56442",
     "website": "hildegard.org",
     "company": {
