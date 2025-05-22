@@ -39,7 +39,7 @@ function jsonToList(data) {
     return ul;
 }
 
-function jsonToTable(data){
+function jsonToTable(data) {
     let tabData = [];
     /* un booléen pour vérifier si on est à la première ligne, pour créer le thead du tableau */
     let firstLine = true;
@@ -66,7 +66,7 @@ function jsonToTable(data){
             /* on ne traite que les enregistrements qui ne contiennent pas d'objet */
             if ((typeof enreg[key]) !== 'object') {
                 /* si c'est la première ligne, on aliment l'entête avec de th qui contiennent les clefs */
-                if(firstLine){
+                if (firstLine) {
                     const th = document.createElement('th');
                     th.append(document.createTextNode(key));
                     /* on ajoute la cellule de tête de colonne à la ligne d'entête */
@@ -82,7 +82,7 @@ function jsonToTable(data){
             }
         }
         /* si c'est le premier enregistrement */
-        if(firstLine){
+        if (firstLine) {
             /* on ajoute la ligne d'entête au thead */
             thead.append(trHead);
             /* on indique qu'on passe à unexième ligne */
@@ -95,7 +95,7 @@ function jsonToTable(data){
     return table;
 }
 
-function jsonSearch(data, searchTerm){
+function jsonSearch(data, searchTerm) {
     let tabData = [];
     if (!Array.isArray(data)) {
         tabData.push(data);
@@ -108,12 +108,12 @@ function jsonSearch(data, searchTerm){
         for (key in enreg) {
             if ((typeof enreg[key]) !== 'object') {
                 const info = (enreg[key].toString()).toLowerCase()
-                if(info.indexOf(searchTerm) > -1){
+                if (info.indexOf(searchTerm) > -1) {
                     lineOk = true;
                 }
             }
         }
-        if(lineOk){
+        if (lineOk) {
             result.push(enreg);
             lineOk = false;
         }
@@ -135,42 +135,42 @@ window.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('result').innerHTML = '';
                     document.getElementById('result').append(jsonToTable(data));
                 })
-                .catch(function(erreur){
-                    console.error(erreur);                    
-                    console.log(erreur.name);                    
-                    console.log(erreur.message);                    
+                .catch(function (erreur) {
+                    console.error(erreur);
+                    console.log(erreur.name);
+                    console.log(erreur.message);
                 })
-                .finally(function(){
+                .finally(function () {
                     console.log('tentative de connexion terminée');
                 });
         });
     });
 
     /* afficher la ligne des tableaux générés par le recherche de ressources */
-    document.getElementById('result').addEventListener('click', function(event){
+    document.getElementById('result').addEventListener('click', function (event) {
         /* l'événement clic nous permet de trouver la cible du clic, on peut retrouver l'élément parent de la cible, comme il s'agit d'un tableau, la cible est une td ou un th */
-        if(event.target.tagName !== 'TH'){
+        if (event.target.tagName !== 'TH') {
             const line = event.target.parentElement.children;
-            for(value of line){
+            for (value of line) {
                 console.log(`${value.dataset.key} :  ${value.innerText}`);
             }
         }
     });
 
     /* chercher un renregistrement contenant une chaîne de caractère entrée dans un champ de saisie */
-    document.querySelector('.search').addEventListener('click', function(){
+    document.querySelector('.search').addEventListener('click', function () {
         const url = './ressources/users.json';
         const searchTerm = document.querySelector('input[name="search"').value.toLowerCase();
-        if(searchTerm !== ''){
-            console.log(searchTerm);
-            fetch(url)
-            .then(function(reponse){
+        document.querySelector('input[name="search"').value = '';
+        //console.log(searchTerm);
+        fetch(url)
+            .then(function (reponse) {
                 return reponse.json();
             })
-            .then(function(data){
+            .then(function (data) {
+                document.getElementById('resultSearch').innerHTML = '';
                 const results = jsonSearch(data, searchTerm);
                 document.getElementById('resultSearch').append(jsonToTable(results));
-            })
-        }
+        });
     });
 });
