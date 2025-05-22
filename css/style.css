@@ -61,5 +61,5 @@ p:not(p.stupid){
 }
 
 .toggle-element{
-    transform: translateX(310px);
+    transform: translateX(350px);
 }
