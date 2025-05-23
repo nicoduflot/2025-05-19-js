@@ -11,6 +11,8 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/chart.js"></script>
+    <script src="./myChart.js"></script>
     <script></script>
 </head>
 
@@ -72,7 +74,13 @@
     <main class="container">
         <section class="row">
             <article>
-                
+                <p>
+                    <input type="radio" name="typeChart" value="bar" checked> <label>Barre</label><br />
+                    <input type="radio" name="typeChart" value="line"> <label>Ligne</label><br />
+                </p>
+                <figure class="ratio ratio-16x9" id="canvasChart">
+                    <canvas id="myChart"></canvas>
+                </figure>
             </article>
         </section>
     </main>
