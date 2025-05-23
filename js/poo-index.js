@@ -62,8 +62,6 @@ console.log(monPremierGuerrier.esperanceDeVie);
 console.log(Guerrier.crier());
 console.log(Guerrier.crier('Par CROM !'));
 
-console.log(monPremierGuerrier);
-
 
 /*
 EN JSON
@@ -149,9 +147,161 @@ console.log(maVoiture.constructor.name);
 console.log(Voiture.getMarque(maVoiture));
 console.log(Voiture.getMarque(monPremierGuerrier));
 console.log(Voiture.setMarque(maVoiture, 'Ford'));
-console.log(Voiture.getMarque(monPremierGuerrier, 'Ford'));
+console.log(Voiture.setMarque(monPremierGuerrier, 'Ford'));
 console.log(maVoiture);
 console.log(maVoiture.demarrer());
 console.log(maVoiture.avancer());
 console.log(Voiture.klaxonner());
 
+/*
+Je dois créer une ambulance pour un hopital
+Un ambulance est une voiture, mais une voiture n'est pas forcément une ambulance
+Une ambulance, c'est une voiture modifiée pour accueillir des blessés, des malades et équipées d'un sirène.
+On ne va pas mettre ces option possible dans la classe voiture, on va créer une classe "fille", qui héritera de tous les éléments communs avec toutes les voiture mais les spécificités de l'ambulance y seront intégrées
+*/
+
+class Ambulance extends Voiture{
+    /*
+    Bien qu'une ambulance est la classe enfant de Voiture, elle nécéssite quand même un constructeur
+    */
+    constructor(marque, modele, couleur, porteLaterale){
+        /*
+        On n'a pas besoin de redéclarer tous les attributs et méthode de la classe parentes dans la classe enfants, on va les "récupérer" grace à la méthode super()
+        */
+        super(marque, modele, couleur);
+        this.couleur = (this.couleur !== 'Blanc')? 'Blanc' : this.couleur;
+        this.sirene = false;
+        this.porteLaterale = porteLaterale;
+    }
+
+    /*
+    Si une méthode héritée de la classe mêre doit être un peu ou complètement différente dans sont utilisation ou action, on peut la surcharger dans la classe fille
+    */
+    demarrer(){
+        let bruit = '';
+        bruit = (this.sirene)? 'PIN PON PIN PON PIN PON !': 'Vrrrrr rrrrr rrrrr rr';
+        return `${super.demarrer()} ${bruit}`;
+    }
+}
+
+const monAmbulance = new Ambulance('Renault','R21', 'Bleue', 1);
+console.log(monAmbulance);
+console.log(monAmbulance.demarrer());
+console.log(monAmbulance.avancer());
+console.log(monAmbulance.constructor.name);
+monAmbulance.sirene = true;
+console.log(monAmbulance.demarrer());
+
+/* créer une classe mère 
+Compte 
+    Attributs :
+    - nom 
+    - prenom
+    - solde
+    Méthodes
+    - retirer de l'argent
+    - ajouter de l'argent
+
+une classe fille CompteInteret
+    Attributs :
+    - nom 
+    - prenom
+    - solde
+    - tauxInteret
+
+    - retirer de l'argent
+    - ajouter de l'argent
+
+une classe fille CompteCourant
+    Attributs :
+    - nom 
+    - prenom
+    - solde
+    - #codePin
+    Méthodes
+    - retirer de l'argent
+    - ajouter de l'argent
+    - payer avec la carte
+*/
+
+class Compte{
+    constructor(nom, prenom, solde){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.solde = solde;
+    }
+
+    retirerDeLArgent(montant){
+        this.solde = this.solde - montant;
+        return `${montant} € retiré(s), solde ${ (this.solde >= 0)? 'créditeur': 'débiteur' } : ${this.solde} €`;
+    }
+    
+    ajouterDeLArgent(montant){
+        this.solde = this.solde + montant;
+        return `${montant} € ajouté(s), solde ${ (this.solde >= 0)? 'créditeur': 'débiteur' } : ${this.solde} €`;
+    }
+}
+
+const compte = new Compte('Duflot', 'Nicolas', 2000);
+console.log(compte);
+console.log(compte.ajouterDeLArgent(800));
+console.log(compte.retirerDeLArgent(400));
+
+class CompteInteret extends Compte{
+    constructor(nom, prenom, solde, tauxInteret){
+        super(nom, prenom, solde);
+        this.tauxInteret = tauxInteret;
+    }
+
+    retirerDeLArgent(montant){
+        if(montant <= this.solde){
+            return super.retirerDeLArgent(montant);
+        }else{
+            return 'Transaction non autorisée, le débit est supérieur au crédit';
+        }
+    }
+
+    calculerInteret(){
+        return ((this.tauxInteret - 1) * this.solde).toFixed(2);
+    }
+
+    crediterInteret(){
+        return super.ajouterDeLArgent(parseFloat(this.calculerInteret()));
+    }
+}
+
+const compteInteret = new CompteInteret('Duflot', 'Nicolas', 2000, 1.05);
+console.log(compteInteret);
+console.log(compteInteret.calculerInteret());
+console.log(compteInteret.crediterInteret());
+console.log(compteInteret.retirerDeLArgent(2100));
+
+class CompteCheque extends Compte{
+    #codePin;
+    constructor(nom, prenom, solde, codePin){
+        super(nom, prenom, solde);
+        this.#codePin = codePin;
+    }
+
+    /* getter pour le codepin */
+    static getCodePin(obj){
+        if(#codePin in obj){
+            return obj.#codePin;
+        }else{
+            return `l'objet doit être une instance de CompteCheque`;
+        }
+    }
+
+    payerParCarte(montant, codePin){
+        if(CompteCheque.getCodePin(this) === codePin){
+            return this.retirerDeLArgent(montant);
+        }else{
+            return `Une tentative de paiement par carte pour le montant de ${montant} € a échoué`;
+        }
+    }
+}
+
+const compteCheque = new CompteCheque('duflot', 'Nicolas', 2000, '1234');
+console.log(compteCheque);
+console.log(compteCheque.payerParCarte(200, '1234'));
+console.log(compteCheque.payerParCarte(200, '4321'));
